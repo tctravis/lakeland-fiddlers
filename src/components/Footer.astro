@@ -1,0 +1,14 @@
+---
+import Container from "./Container.astro";
+
+import { siteTitle, siteEmail } from "../data/site.json";
+---
+
+<footer class="Footer py-8 bg-footer-bg text-footer-text">
+  <Container>
+    <div class="sm:flex justify-between">
+      <p>&copy;2023 {siteTitle}</p>
+      <a href={`mailto:${siteEmail}`}>{siteEmail}</a>
+    </div>
+  </Container>
+</footer>

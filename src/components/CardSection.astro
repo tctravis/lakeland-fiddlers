@@ -1,0 +1,11 @@
+---
+import PageSection from "./PageSection.astro";
+import CardGrid from "./CardGrid.astro";
+import Card from "./Card.astro";
+
+const { cards } = Astro.props;
+---
+
+<PageSection>
+  <CardGrid cardsPerRow={3}>{cards.map((card) => <Card title={card.title} body={card.body} href={card.href} img={card.img} />)}</CardGrid>
+</PageSection>

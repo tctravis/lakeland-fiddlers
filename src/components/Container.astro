@@ -1,0 +1,5 @@
+---
+const { wrapperClasses, containerClasses } = Astro.props;
+---
+
+<div class:list={[wrapperClasses]}><div class:list={['container mx-auto px-4 relative', containerClasses]}><slot /></div></div>

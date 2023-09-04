@@ -1,0 +1,11 @@
+{
+    "siteTitle": "Lakeland Fiddlers",
+    "siteStrapline": "A community music group specialising in promoting and performing Lakeland Fiddle tunes",
+    "siteEmail": "tobytravis@gmail.com",
+    "theme": {
+        "bg" : {
+            "odd-row": "odd:bg-lime-50",
+            "even-row": "even:bg-lime-100"
+        }
+    }
+}

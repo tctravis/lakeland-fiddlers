@@ -1,0 +1,22 @@
+---
+import Container from "../components/Container.astro";
+import { Image } from "@astrojs/image/components";
+
+const { pageTitle, pageSubTitle } = Astro.props;
+---
+
+<header>
+  <Container
+    wrapperClasses="bg-[url('/images/fiddlers.jpg')] bg-cover pt-16"
+  >
+
+    <div class="w-full flex flex-col pb-6">
+      <div class="max-w-md bg-[rgba(255,255,255,0.9)] text-right self-end space-y-4 p-6 mb-16 rounded-lg">
+        <h1 class="text-5xl font-headers font-weight-headers text-headers">{pageTitle}</h1>
+        <p class="text-md">{pageSubTitle}</p>
+      </div>
+    </div>
+
+
+  </Container>
+</header>

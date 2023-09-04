@@ -1,0 +1,22 @@
+---
+import { Image } from '@astrojs/image/components';
+
+// export interface Props {
+//   title: string;
+//   body: string;
+//   href: string;
+//   img: object;
+// }
+
+const { href = "", title = "", body = "", img = null } = Astro.props;
+---
+
+<div class="bg-white rounded-lg shadow">
+  <a href={href}>
+	{img && <Image class="rounded-t-lg" src={img.src} alt={img.alt} width={img.width} height={img.height} format={img.format} />}
+    <div class="p-4 space-y-4">
+      {title && <h2 class="text-2xl font-bold text-headers font-headers">{title}</h2>}
+      {body && <p>{body}</p>}
+    </div>
+  </a>
+</div>
