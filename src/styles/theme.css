@@ -20,7 +20,7 @@
     --font-weight-headers: 500;
     --font-weight-body: 400;
 
-    --lime-950: #1a2e05;
+    --orange-950: #431407;
 
     --stone-50: #fafaf9;
     --stone-100: #f5f5f4;
@@ -28,11 +28,11 @@
     --content-section-bg-odd: var(--stone-50);
     --content-section-bg-even: var(--stone-100);
 
-    --headers-color: var(--lime-950);
+    --headers-color: var(--orange-950);
 
-    --header-bg-color: var(--lime-950);
+    --header-bg-color: var(--orange-950);
     --header-text-color: #fff;
-    --footer-bg-color: var(--lime-950);
+    --footer-bg-color: var(--orange-950);
     --footer-text-color: #fff;
 }
 
