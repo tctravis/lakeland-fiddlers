@@ -1,0 +1,4 @@
+---
+const { condition, href } = Astro.props;
+---
+{condition ? <a href={href}><slot /></Wrapper> : <Fragment><slot /></Fragment>}

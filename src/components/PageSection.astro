@@ -1,7 +1,12 @@
 ---
 import Container from "../components/Container.astro";
 
-import {theme} from '../data/site.json';
+const { element = 'section', settings = {} } = Astro.props;
+const Element = element
+
+const sectionId = {
+    ...(settings.sectionId && { "id": `${settings.sectionId}` })
+}
 ---
 
-<section class={`odd:bg-content-section-odd even:bg-content-section-even py-8`}><Container><slot /></Container></section>
+<Element {...sectionId} class={`odd:bg-content-section-odd even:bg-content-section-even py-8`}><Container><slot /></Container></Element>

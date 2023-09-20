@@ -1,0 +1,20 @@
+---
+import Container from "./Container.astro";
+
+const { content, settings } = Astro.props;
+---
+
+<header>
+  <Container
+    wrapperClasses={settings.wrapperClasses}
+  >
+    <div class="w-full flex flex-col pb-6">
+      <div class="max-w-xl bg-[rgba(255,255,255,0.9)] text-right self-end p-6 mb-16 rounded-lg prose">
+        <h1 class="text-5xl sm:text-5xl font-headers font-weight-headers text-headers">{content.pageTitle}</h1>
+        {content.pageSubTitle && <h2 class="text-md uppercase">{content.pageSubTitle}</h2>}
+        {content.pageStrapline && <p class="max-w-lg text-md" set:html={content.pageStrapline}/>}
+      </div>
+      <slot />
+    </div>
+  </Container>
+</header>

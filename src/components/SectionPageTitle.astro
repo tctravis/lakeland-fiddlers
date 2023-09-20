@@ -1,0 +1,10 @@
+---
+import PageSection from "./PageSection.astro";
+
+const { pageTitle } = Astro.props;
+---
+
+<PageSection element="header">
+    <h1>{pageTitle}</h1>
+    <slot />
+</PageSection>

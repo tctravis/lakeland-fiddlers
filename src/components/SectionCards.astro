@@ -1,0 +1,28 @@
+---
+import { marked } from "marked";
+
+import PageSection from "./PageSection.astro";
+import Grid from "./Grid.astro";
+import Card from "./Card.astro";
+
+const { settings, content } = Astro.props;
+---
+
+<PageSection settings={settings}>
+  <div class="space-y-4 flex flex-col">
+    {content.title && <h2 class="text-4xl sm:text-center font-headers font-weight-headers">{content.title}</h2>}
+    {content.body && <div class="prose sm:text-center sm:max-w-3xl mx-auto" set:html={marked.parse(content.body)}/>}
+    <Grid itemsPerRow={settings.itemsPerRow}>
+      {
+        content.cards.map((card) => (
+          <Card
+            title={card.title}
+            body={card.body}
+            href={card.href}
+            image={card.image}
+          />
+        ))
+      }
+    </Grid>
+  </div>
+</PageSection>

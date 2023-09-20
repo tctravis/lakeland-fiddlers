@@ -1,0 +1,49 @@
+---
+import { Image } from "@astrojs/image/components";
+
+import PageSection from "./PageSection.astro";
+
+const logos = [
+  {
+    text: "RHS Level 2 qualification in Horticultural Theory and Practice",
+    img: {
+      src: "/images/rhs.svg",
+      alt: "RHS",
+      width: 259,
+      height: 194,
+      format: "svg",
+    },
+  },
+  {
+    text: "NOCN Level 3 qualification in Garden and Planting Design",
+    img: {
+      src: "/images/nocn@2x.png",
+      alt: "NOCN",
+      width: 222,
+      height: 267,
+      format: "png",
+    },
+  },
+];
+---
+
+<PageSection>
+  <div class="flex flex-wrap items-start justify-center">
+    {
+      logos.map((logo) => (
+        <div class="flex flex-col gap-4 w-1/2">
+          <div class="w-48">
+            <Image
+              src={logo.img.src}
+              alt={logo.img.alt}
+              width={logo.img.width}
+              height={logo.img.height}
+              format={logo.img.format}
+            />
+          </div>
+          <p>{logo.text}</p>
+        </div>
+      ))
+    }
+  </div>
+</PageSection>

@@ -1,0 +1,33 @@
+---
+import SectionHero from "../components/SectionHero.astro";
+import SectionCards from "../components/SectionCards.astro";
+import SectionQuote from "../components/SectionQuote.astro";
+import SectionTextImage from "../components/SectionTextImage.astro";
+import SectionGallery from "../components/SectionGallery.astro";
+
+const { sections } = Astro.props;
+---
+
+{
+    sections.map(
+      (section) =>
+        (section.settings.type === "hero" && (
+          <SectionHero settings={section.settings} content={section.content} />
+        )) ||
+        (section.settings.type === "text-and-image" && (
+          <SectionTextImage
+            settings={section.settings}
+            content={section.content}
+          />
+        )) ||
+        (section.settings.type === "quote" && (
+          <SectionQuote settings={section.settings} content={section.content} />
+        )) ||
+        (section.settings.type === "cards" && (
+          <SectionCards settings={section.settings} content={section.content} />
+        )) ||
+        (section.settings.type === "gallery" && (
+          <SectionGallery settings={section.settings} content={section.content} />
+        ))
+    )
+  }
