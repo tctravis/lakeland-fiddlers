@@ -1,0 +1,9 @@
+---
+import { Vimeo } from 'astro-embed';
+const { vimeo_id, caption } = Astro.props;
+---
+
+<div class="not-prose">
+    <Vimeo id={vimeo_id} />
+    <p>{caption}</p>
+</div>
