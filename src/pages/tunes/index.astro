@@ -1,0 +1,25 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import { siteTitle, siteStrapline } from "../../data/site.json";
+import SectionPageTitle from "../../components/SectionPageTitle.astro";
+import PageSection from "../../components/PageSection.astro";
+
+import { getCollection } from "astro:content";
+const allTunes = await getCollection("tunes");
+---
+
+<Layout pageTitle={siteTitle}>
+  <SectionPageTitle pageTitle="Tunes" />
+  <PageSection>
+    <ul>
+      {
+        allTunes.map((tune) => (
+          <li>
+            <a href={tune.slug}>{tune.data.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </PageSection>
+</Layout>

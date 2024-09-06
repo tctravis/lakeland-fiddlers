@@ -10,12 +10,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/image": "^0.16.6",
-    "@astrojs/tailwind": "^3.1.1",
-    "@astrojs/vue": "^2.1.1",
-    "astro": "^2.2.2",
+    "@astrojs/tailwind": "5.1.0",
+    "@astrojs/vue": "4.5.0",
+    "astro": "4.15.3",
     "marked": "^9.0.3",
     "tailwindcss": "^3.0.24",
+    "typescript": "^5.5.4",
     "vue": "^3.2.30"
   }
 }

@@ -16,6 +16,6 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 <Layout>
-  <SectionPageTitle pageTitle={entry.data.title}><p>Strapline</p></SectionPageTitle>
+  <SectionPageTitle pageTitle={entry.data.title}/>
   <Content />
 </Layout>
