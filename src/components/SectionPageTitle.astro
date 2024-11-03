@@ -5,6 +5,10 @@ const { pageTitle } = Astro.props;
 ---
 
 <PageSection element="header">
-    <h1 class="text-3xl font-headers font-weight-headers text-headers">{pageTitle}</h1>
+  <div class="space-y-4">
+    <h1 class="text-3xl font-headers font-weight-headers text-headers">
+      {pageTitle}
+    </h1>
     <slot />
+  </div>
 </PageSection>

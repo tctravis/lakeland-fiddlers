@@ -3,7 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 
 import SectionPageTitle from "../../components/SectionPageTitle.astro";
 import PageSection from "../../components/PageSection.astro";
-import Link from "../../components/Link.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
 
 import { getCollection } from "astro:content";
 // 1. Generate a new path for every collection entry
@@ -17,9 +17,20 @@ export async function getStaticPaths() {
 // 2. For your template, you can get the entry directly from the prop
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+console.log(entry)
+
+const breadcrumbs = [
+  { href: "/tunes", text: "Tunes" },
+  { href: "/tunes" + entry.slug, text: entry.data.title,}
+];
 ---
 
 <Layout>
-  <SectionPageTitle pageTitle={entry.data.title}><Link href="/tunes">All tunes</Link></SectionPageTitle>
-  <PageSection><div class="prose"><Content /></div></PageSection>
+  <SectionPageTitle pageTitle={entry.data.title}
+    ><Breadcrumbs links={breadcrumbs} /></SectionPageTitle
+  >
+  <PageSection
+    ><div class="prose prose-h2:font-headers"><Content /></div></PageSection
+  >
 </Layout>

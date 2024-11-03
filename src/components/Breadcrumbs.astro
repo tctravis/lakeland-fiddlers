@@ -1,0 +1,19 @@
+---
+import Link from "./Link.astro";
+
+const {
+  links = []
+} = Astro.props;
+---
+
+<div>
+  <ol class="flex items-center gap-2">
+    {
+    links.map((link, index) => (
+      (index !== links.length - 1 ? (
+        <Link href={link.href}>{link.text}</Link><span>&gt;</span>
+      ) : <p>{link.text}</p>) 
+    ))
+    }
+  </ol>
+</div>
