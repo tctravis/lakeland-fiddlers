@@ -1,0 +1,22 @@
+---
+import Link from "../Link.astro";
+
+const { tuneMeta } = Astro.props;
+
+import { getCollection, getEntry } from "astro:content";
+const relatedTunes = await getCollection("tunes", ({ slug }) => {
+  return tuneMeta.relatedTunes.includes(slug);
+});
+---
+
+<p>Type: {tuneMeta.type}</p>
+<div class="flex items-center gap-2">
+<p>Related tunes:</p>
+<ol class="flex items-center gap-2">
+    {
+    relatedTunes.map((relatedTune) => (
+        <li><Link href={`/tunes/${relatedTune.slug}`}>{relatedTune.data.title}</Link></li>
+    ))
+    }
+</ol>
+</div>

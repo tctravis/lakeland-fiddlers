@@ -4,6 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 import SectionPageTitle from "../../components/SectionPageTitle.astro";
 import PageSection from "../../components/PageSection.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import TuneMetaData from "../../components/lakeland-fiddlers/TuneMetaData.astro";
 
 import { getCollection } from "astro:content";
 // 1. Generate a new path for every collection entry
@@ -18,18 +19,18 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
-console.log(entry)
-
 const breadcrumbs = [
   { href: "/tunes", text: "Tunes" },
-  { href: "/tunes" + entry.slug, text: entry.data.title,}
+  { href: "/tunes" + entry.slug, text: entry.data.title },
 ];
+const tuneMeta = entry.data.tuneMeta ? entry.data.tuneMeta : false
 ---
 
 <Layout>
   <SectionPageTitle pageTitle={entry.data.title}
     ><Breadcrumbs links={breadcrumbs} /></SectionPageTitle
   >
+  {tuneMeta && <PageSection><TuneMetaData tuneMeta={tuneMeta} /></PageSection>}
   <PageSection
     ><div class="prose prose-h2:font-headers"><Content /></div></PageSection
   >
