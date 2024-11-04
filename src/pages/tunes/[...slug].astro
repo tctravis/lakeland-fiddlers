@@ -4,6 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 import SectionPageTitle from "../../components/SectionPageTitle.astro";
 import PageSection from "../../components/PageSection.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import TuneDots from "../../components/lakeland-fiddlers/TuneDots.astro";
 import TuneMetaData from "../../components/lakeland-fiddlers/TuneMetaData.astro";
 
 import { getCollection } from "astro:content";
@@ -23,15 +24,37 @@ const breadcrumbs = [
   { href: "/tunes", text: "Tunes" },
   { href: "/tunes" + entry.slug, text: entry.data.title },
 ];
-const tuneMeta = entry.data.tuneMeta ? entry.data.tuneMeta : false
+const tuneMeta = entry.data.tuneMeta ? entry.data.tuneMeta : false;
+const dots = entry.data.dots;
+console.log(entry.data);
 ---
 
 <Layout>
   <SectionPageTitle pageTitle={entry.data.title}
     ><Breadcrumbs links={breadcrumbs} /></SectionPageTitle
   >
-  {tuneMeta && <PageSection><TuneMetaData tuneMeta={tuneMeta} /></PageSection>}
-  <PageSection
-    ><div class="prose prose-h2:font-headers"><Content /></div></PageSection
-  >
+  {
+    tuneMeta && (
+      <PageSection>
+        <TuneMetaData tuneMeta={tuneMeta} />
+      </PageSection>
+    )
+  }
+  {
+    dots &&
+      dots.map((dots) => (
+        <PageSection>
+          <TuneDots tuneDots={dots} />
+        </PageSection>
+      ))
+  }
+  {
+    Content && (
+      <PageSection>
+        <div class="prose prose-h2:font-headers">
+          <Content />
+        </div>
+      </PageSection>
+    )
+  }
 </Layout>

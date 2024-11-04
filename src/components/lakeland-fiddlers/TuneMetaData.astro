@@ -5,8 +5,8 @@ const { tuneMeta } = Astro.props;
 
 import { getCollection, getEntry } from "astro:content";
 const relatedTunes = tuneMeta.relatedTunes
-  ? await getCollection("tunes", ({ slug }) => {
-      return tuneMeta.relatedTunes.includes(slug);
+  ? await getCollection("tunes", ({ slug, data }) => {
+      return tuneMeta.relatedTunes.includes(data.title);
     })
   : [];
 ---
