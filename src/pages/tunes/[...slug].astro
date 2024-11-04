@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 
 import SectionPageTitle from "../../components/SectionPageTitle.astro";
 import PageSection from "../../components/PageSection.astro";
+import Prose from "../../components/Prose.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import TuneDots from "../../components/lakeland-fiddlers/TuneDots.astro";
 import TuneMetaData from "../../components/lakeland-fiddlers/TuneMetaData.astro";
@@ -25,8 +26,9 @@ const breadcrumbs = [
   { href: "/tunes" + entry.slug, text: entry.data.title },
 ];
 const tuneMeta = entry.data.tuneMeta ? entry.data.tuneMeta : false;
-const dots = entry.data.dots;
-console.log(entry.data);
+const tuneDots = entry.data.tuneDots;
+const tuneVideo = entry.data.tuneVideo;
+// console.log(entry.data);
 ---
 
 <Layout>
@@ -41,19 +43,32 @@ console.log(entry.data);
     )
   }
   {
-    dots &&
-      dots.map((dots) => (
+    tuneDots &&
+      tuneDots.map((dots) => (
         <PageSection>
-          <TuneDots tuneDots={dots} />
+          <TuneDots tuneDots={dots.dots} />
+        </PageSection>
+      ))
+  }
+  {
+    tuneVideo &&
+      tuneVideo.map((video) => (
+        <PageSection>
+          <Prose>
+            <h2>{video.video.title}</h2>
+            <video controls>
+              <source src={video.video.src} type="video/webm" />
+            </video>
+          </Prose>
         </PageSection>
       ))
   }
   {
     Content && (
       <PageSection>
-        <div class="prose prose-h2:font-headers">
+        <Prose>
           <Content />
-        </div>
+        </Prose>
       </PageSection>
     )
   }

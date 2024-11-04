@@ -9,24 +9,33 @@ const relatedTunes = tuneMeta.relatedTunes
       return tuneMeta.relatedTunes.includes(data.title);
     })
   : [];
+
+// console.log(tuneMeta)
 ---
 
 {tuneMeta.rhythm ? <p>Rhythm: {tuneMeta.rhythm}</p> : null}
 {tuneMeta.source ? <p>Source: {tuneMeta.source}</p> : null}
+{tuneMeta.date ? <p>Date: {tuneMeta.date}</p> : null}
 {
-  tuneMeta.tuneArch ? (
-    <p>
-      More info:{" "}
-      <Link href={tuneMeta.tuneArch} target="_blank">
-        Traditional Tune Archive
-      </Link>
-    </p>
-  ) : null
+  tuneMeta.relatedLinks && tuneMeta.relatedLinks.length > 0 && (
+    <div class="flex flex-wrap items-center gap-2">
+      <p>Related links:</p>
+      <ol class="flex items-center gap-2">
+        {tuneMeta.relatedLinks.map((relatedLink) => (
+          <li>
+            <Link href={relatedLink.link.url}>
+              {relatedLink.link.text}
+            </Link>
+          </li>
+        ))}
+      </ol>
+    </div>
+  )
 }
 {
   relatedTunes && relatedTunes.length > 0 && (
-    <div class="flex items-center gap-2">
-      <p>Related tunes:</p>
+    <div class="flex flex-wrap items-center">
+      <p class="mr-2">Related tunes:</p>
       <ol class="flex items-center gap-2">
         {relatedTunes.map((relatedTune) => (
           <li>

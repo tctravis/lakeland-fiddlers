@@ -3,8 +3,19 @@ import Figure from "../Figure.astro";
 import Link from "../Link.astro";
 
 const { tuneDots } = Astro.props;
+const downloadFileType = tuneDots.download?.fileType ? tuneDots.download.fileType : 'PDF'
+// console.log("tuneDots: ", tuneDots);
 ---
+
 <div class="max-w-[800px] space-y-8">
-    <div><Link target="_blank" href={tuneDots.image.download.src}>Download pdf, {tuneDots.image.download.fileSize}</Link></div>
-    <Figure  image={tuneDots.image} />
+  {
+    tuneDots.download && (
+      <div>
+        <Link target="_blank" href={tuneDots.download.src}>
+          {tuneDots.download.title} - {downloadFileType} - {tuneDots.download.fileSize}
+        </Link>
+      </div>
+    )
+  }
+  {tuneDots.image && <Figure image={tuneDots.image} />}
 </div>
