@@ -6,7 +6,8 @@ import PageSection from "../../components/PageSection.astro";
 import Prose from "../../components/Prose.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import TuneDots from "../../components/lakeland-fiddlers/TuneDots.astro";
-import TuneMetaData from "../../components/lakeland-fiddlers/TuneMetaData.astro";
+import TuneMetaHeader from "../../components/lakeland-fiddlers/TuneMetaHeader.astro";
+import TuneMetaFooter from "../../components/lakeland-fiddlers/TuneMetaFooter.astro";
 
 import { getCollection } from "astro:content";
 // 1. Generate a new path for every collection entry
@@ -36,9 +37,12 @@ const tuneVideo = entry.data.tuneVideo;
     ><Breadcrumbs links={breadcrumbs} /></SectionPageTitle
   >
   {
-    tuneMeta && (
+    (tuneMeta.relatedTunes || tuneMeta.bandcamp) && (
       <PageSection>
-        <TuneMetaData tuneMeta={tuneMeta} />
+        <TuneMetaHeader
+          relatedTunes={tuneMeta.relatedTunes}
+          bandcamp={tuneMeta.bandcamp}
+        />
       </PageSection>
     )
   }
@@ -69,6 +73,21 @@ const tuneVideo = entry.data.tuneVideo;
         <Prose>
           <Content />
         </Prose>
+      </PageSection>
+    )
+  }
+  {
+    (tuneMeta.relatedLinks ||
+      tuneMeta.rhythm ||
+      tuneMeta.date ||
+      tuneMeta.source) && (
+      <PageSection>
+        <TuneMetaFooter
+          relatedLinks={tuneMeta.relatedLinks}
+          rhythm={tuneMeta.rhythm}
+          source={tuneMeta.source}
+          date={tuneMeta.date}
+        />
       </PageSection>
     )
   }

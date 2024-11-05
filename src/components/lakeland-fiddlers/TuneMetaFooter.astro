@@ -1,0 +1,24 @@
+---
+import Link from "../Link.astro";
+
+const { relatedLinks = null, rhythm = null, source = null, date = null } = Astro.props;
+---
+<div class="space-y-4">
+  {rhythm ? <p>Rhythm: {rhythm}</p> : null}
+  {source ? <p>Source: {source}</p> : null}
+  {date ? <p>Date: {date}</p> : null}
+  {
+    relatedLinks && relatedLinks.length > 0 && (
+      <div class="flex flex-wrap items-center gap-2">
+        <p>Related links:</p>
+        <ol class="flex flex-wrap items-center gap-2">
+          {relatedLinks.map((relatedLink) => (
+            <li>
+              <Link href={relatedLink.link.url}>{relatedLink.link.text}</Link>
+            </li>
+          ))}
+        </ol>
+      </div>
+    )
+  }
+</div>

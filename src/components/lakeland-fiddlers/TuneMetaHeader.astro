@@ -1,0 +1,44 @@
+---
+import Link from "../Link.astro";
+
+const { relatedTunes = null, bandcamp = null } = Astro.props;
+
+import { getCollection, getEntry } from "astro:content";
+const relatedTunesCollection = relatedTunes
+  ? await getCollection("tunes", ({ slug, data }) => {
+      return relatedTunes.includes(data.title);
+    })
+  : [];
+
+import { Image } from "astro:assets";
+import bandcampIcon from "../../assets/images/bandcamp-button-square-aqua-64.png";
+---
+
+<div class="space-y-4">
+  {
+    bandcamp?.url && (
+      <p class="flex items-center gap-2 flex-no-wrap">
+        <Image src={bandcampIcon} width="20" height="20" alt="Bandcamp logo" />
+        <Link target="_blank" href={bandcamp.url}>
+          Listen on bandcamp
+        </Link>
+      </p>
+    )
+  }
+  {
+    relatedTunesCollection && relatedTunesCollection.length > 0 && (
+      <div class="flex flex-wrap items-center">
+        <p class="mr-2">Related tunes:</p>
+        <ol class="flex flex-wrap items-center gap-2">
+          {relatedTunesCollection.map((relatedTune) => (
+            <li>
+              <Link href={`/tunes/${relatedTune.slug}`}>
+                {relatedTune.data.title}
+              </Link>
+            </li>
+          ))}
+        </ol>
+      </div>
+    )
+  }
+</div>

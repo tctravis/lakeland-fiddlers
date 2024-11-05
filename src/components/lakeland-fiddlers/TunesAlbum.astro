@@ -2,6 +2,7 @@
 const { albumTitle } = Astro.props;
 
 import Link from "../../components/Link.astro";
+import TuneLink from "../../components/lakeland-fiddlers/TuneLink.astro";
 
 import { getCollection } from "astro:content";
 const albumTunes = await getCollection("tunes", ({ data }) => {
@@ -14,7 +15,7 @@ const albumTunes = await getCollection("tunes", ({ data }) => {
     {
       albumTunes.map((tune) => (
         <li>
-          <Link href={`/tunes/${tune.slug}`}>{tune.data.title}</Link>
+          <TuneLink tune={tune} />
         </li>
       ))
     }

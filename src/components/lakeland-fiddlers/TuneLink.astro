@@ -1,0 +1,15 @@
+---
+import Link from "../Link.astro";
+
+import { Image } from "astro:assets";
+import bandcampIcon from "../../assets/images/bandcamp-button-square-aqua-64.png";
+
+const { tune } = Astro.props;
+---
+
+<div class="flex flex-no-wrap items-center gap-2">
+  <Link href={`/tunes/${tune.slug}`}>{tune.data.title}</Link>
+  {
+    tune.data.tuneMeta.bandcamp?.url && (<Image class="not-prose" src={bandcampIcon} width="20" height="20" alt="Bandcamp logo" />)
+  }
+</div>
