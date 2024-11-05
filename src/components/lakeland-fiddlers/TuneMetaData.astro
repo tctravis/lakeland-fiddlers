@@ -12,7 +12,7 @@ const relatedTunes = tuneMeta.relatedTunes
 
 // console.log(tuneMeta)
 ---
-
+<div class="space-y-2">
 {tuneMeta.rhythm ? <p>Rhythm: {tuneMeta.rhythm}</p> : null}
 {tuneMeta.source ? <p>Source: {tuneMeta.source}</p> : null}
 {tuneMeta.date ? <p>Date: {tuneMeta.date}</p> : null}
@@ -20,7 +20,7 @@ const relatedTunes = tuneMeta.relatedTunes
   tuneMeta.relatedLinks && tuneMeta.relatedLinks.length > 0 && (
     <div class="flex flex-wrap items-center gap-2">
       <p>Related links:</p>
-      <ol class="flex items-center gap-2">
+      <ol class="flex flex-wrap items-center gap-2">
         {tuneMeta.relatedLinks.map((relatedLink) => (
           <li>
             <Link href={relatedLink.link.url}>
@@ -36,7 +36,7 @@ const relatedTunes = tuneMeta.relatedTunes
   relatedTunes && relatedTunes.length > 0 && (
     <div class="flex flex-wrap items-center">
       <p class="mr-2">Related tunes:</p>
-      <ol class="flex items-center gap-2">
+      <ol class="flex flex-wrap items-center gap-2">
         {relatedTunes.map((relatedTune) => (
           <li>
             <Link href={`/tunes/${relatedTune.slug}`}>
@@ -48,3 +48,4 @@ const relatedTunes = tuneMeta.relatedTunes
     </div>
   )
 }
+</div>
