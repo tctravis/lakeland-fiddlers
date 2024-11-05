@@ -1,0 +1,20 @@
+---
+import Link from "../../components/Link.astro";
+
+import { getCollection } from "astro:content";
+const sessionTunes = await getCollection("tunes", ({ data }) => {
+  return Array.isArray(data.tuneMeta.type) && data.tuneMeta.type.includes('session');
+});
+---
+<div class="prose prose-h2:font-headers">
+  <h2>Session Tunes</h2>
+  <ul class="space-y-2">
+    {
+      sessionTunes.map((tune) => (
+        <li>
+          <Link href={`/tunes/${tune.slug}`}>{tune.data.title}</Link>
+        </li>
+      ))
+    }
+  </ul>
+</div>

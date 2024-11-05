@@ -1,0 +1,18 @@
+---
+import Link from "../../components/Link.astro";
+
+import { getCollection } from "astro:content";
+const allTunes = await getCollection("tunes");
+---
+<div class="prose prose-h2:font-headers">
+  <h2>A-Z</h2>
+  <ul class="space-y-2">
+    {
+      allTunes.map((tune) => (
+        <li>
+          <Link href={`/tunes/${tune.slug}`}>{tune.data.title}</Link>
+        </li>
+      ))
+    }
+  </ul>
+</div>

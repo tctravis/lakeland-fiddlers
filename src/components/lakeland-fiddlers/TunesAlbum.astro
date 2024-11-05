@@ -1,0 +1,22 @@
+---
+const { albumTitle } = Astro.props;
+
+import Link from "../../components/Link.astro";
+
+import { getCollection } from "astro:content";
+const albumTunes = await getCollection("tunes", ({ data }) => {
+  return data.tuneMeta.album?.title === albumTitle;
+});
+---
+<div class="prose prose-h2:font-headers">
+  <h2>{albumTitle}</h2>
+  <ul class="space-y-2">
+    {
+      albumTunes.map((tune) => (
+        <li>
+          <Link href={`/tunes/${tune.slug}`}>{tune.data.title}</Link>
+        </li>
+      ))
+    }
+  </ul>
+</div>
