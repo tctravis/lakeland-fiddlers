@@ -10,7 +10,7 @@ export function onRequest (context, next) {
       const [username, pwd] = atob(authValue).split(":");
   
       // check if the username and password are valid
-      if (username === "admin" && pwd === "admin") {
+      if (username === import.meta.env.USERNAME && pwd === import.meta.env.PASSWORD) {
         // forward request
         return next();
       }
