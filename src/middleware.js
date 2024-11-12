@@ -1,6 +1,10 @@
 export function onRequest (context, next) {
     const basicAuth = context.request.headers.get("authorization");
 
+    if(context.url.pathname.split('/')[1] !== 'tunes'){
+      return next()
+    }
+
     if (basicAuth) {
       // Get the auth value from string "Basic authValue"
       const authValue = basicAuth.split(" ")[1] ?? "username:password";
