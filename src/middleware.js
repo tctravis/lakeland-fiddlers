@@ -17,13 +17,17 @@ export function onRequest (context, next) {
       if (username === import.meta.env.USERNAME && pwd === import.meta.env.PASSWORD) {
         // forward request
         return next();
-      }
+      } 
+      // else {
+      //   // return context.redirect("no-auth", 302);
+      //   return Response.redirect(new URL("/no-auth", "http://localhost:4321"), 302);
+      // }
     }
   
     return new Response("Auth required", {
       status: 401,
       headers: {
-        "WWW-authenticate": 'Basic realm="Secure Area"',
+        "WWW-authenticate": 'Basic realm="Access to Tunes"',
       },
     });
 };
