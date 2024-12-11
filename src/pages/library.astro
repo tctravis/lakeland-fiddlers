@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SectionPageTitle from "../components/SectionPageTitle.astro";
+
+import { siteTitle, siteStrapline } from "../data/site.json";
+import PageSection from "../components/PageSection.astro";
+import Grid from "../components/Grid.astro";
+import LibraryResource from "../components/lakeland-fiddlers/LibraryResource.astro";
+
+import { getCollection } from "astro:content";
+const library = await getCollection("library", ({ data }) => {
+  return data.title !== 'Template';
+});
+---
+
+<Layout pageTitle={siteTitle}>
+  <SectionPageTitle pageTitle="Library" />
+  <PageSection>
+    <Grid itemsPerRow={3}>
+      {
+        library.map((resource) => (
+          <LibraryResource resource={resource} />
+        ))
+      }
+    </Grid>
+  </PageSection>
+</Layout>

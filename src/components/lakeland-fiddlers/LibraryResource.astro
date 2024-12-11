@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props {
+    resource: CollectionEntry<'library'>;
+}
+
+import Prose from "../../components/Prose.astro";
+
+const { resource } = Astro.props;
+const { Content } = await resource.render();
+---
+<div class="bg-white rounded-lg p-2 shadow space-y-2">
+    <h2 class="text-2xl font-headers font-weight-headers text-headers">{resource.data.title}</h2>
+    <div class="w-full flex flex-wrap items-start gap-2 justify-between">
+        {resource.data.type ? <p><span class="text-body-color-light">Type:</span> {resource.data.type}</p> : null}
+        {resource.data.author ? <p><span class="text-body-color-light">Author:</span> {resource.data.author}</p> : null}
+    </div>
+    <div class="w-full flex flex-wrap items-start gap-2 justify-between">
+        {resource.data.status ? <p><span class="text-body-color-light">Status:</span> {resource.data.status}</p> : null}
+        {resource.data.loanee ? <p><span class="text-body-color-light">To:</span> {resource.data.loanee}</p> : null}
+    </div>
+    <Prose><Content /></Prose>
+</div>

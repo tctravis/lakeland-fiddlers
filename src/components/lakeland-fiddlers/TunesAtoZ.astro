@@ -2,7 +2,9 @@
 import Link from "../../components/Link.astro";
 
 import { getCollection } from "astro:content";
-const allTunes = await getCollection("tunes");
+const allTunes = await getCollection("tunes", ({ data }) => {
+  return data.publish;
+});
 ---
 <div class="prose prose-h2:font-headers">
   <h2>A-Z</h2>

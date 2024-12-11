@@ -3,7 +3,7 @@ import Link from "../../components/Link.astro";
 
 import { getCollection } from "astro:content";
 const sessionTunes = await getCollection("tunes", ({ data }) => {
-  return Array.isArray(data.tuneMeta.type) && data.tuneMeta.type.includes('session');
+  return Array.isArray(data.tuneMeta.type) && data.tuneMeta.type.includes('session') && data.publish;
 });
 ---
 <div class="prose prose-h2:font-headers">

@@ -17,6 +17,8 @@ module.exports = {
 					text: 'var(--footer-text-color)',
 				},
 				headers: 'var(--headers-color)',
+				'body-color': 'var(--body-text-color)',
+				'body-color-light': 'var(--body-text-color-light)',
 			},
 			fontFamily: {
 				headers: 'var(--font-family-headers)',
