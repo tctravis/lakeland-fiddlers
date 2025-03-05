@@ -76,8 +76,8 @@ const tuneVideo = entry.data.tuneVideo;
         <PageSection>
           <Prose>
             <h2>{video.video.title}</h2>
-            <video controls>
-              <source src={video.video.src} type="video/webm" />
+            <video controls playsinline>
+              <source src={video.video.src} type="video/mp4" />
             </video>
           </Prose>
         </PageSection>
