@@ -7,7 +7,6 @@ const sessionTunes = await getCollection("tunes", ({ id, data }) => {
 });
 ---
 <div class="prose prose-h2:font-headers">
-    <h2>All tunes</h2>
     <TunesListSearchable tunes={sessionTunes} client:load />
 </div>
 
