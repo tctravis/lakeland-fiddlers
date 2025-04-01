@@ -14,7 +14,7 @@ import TuneMetaFooter from "../../components/lakeland-fiddlers/TuneMetaFooter.as
 // export async function getStaticPaths() {
 //   const tunes = await getCollection("tunes");
 //   return tunes.map((entry) => ({
-//     params: { slug: entry.slug },
+//     params: { slug: entry.id },
 //     props: { entry },
 //   }));
 // }
@@ -40,7 +40,7 @@ const { Content } = await entry.render();
 
 const breadcrumbs = [
   { href: "/tunes", text: "Tunes" },
-  { href: "/tunes" + entry.slug, text: entry.data.title },
+  { href: "/tunes" + entry.id, text: entry.data.title },
 ];
 const tuneMeta = entry.data.tuneMeta ? entry.data.tuneMeta : false;
 const tuneDots = entry.data.tuneDots;

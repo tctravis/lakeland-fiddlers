@@ -12,7 +12,7 @@ const allTunes = await getCollection("tunes", ({ data }) => {
     {
       allTunes.map((tune) => (
         <li>
-          <Link href={`/tunes/${tune.slug}`}>{tune.data.title}</Link>
+          <Link href={`/tunes/${tune.id}`}>{tune.data.title}</Link>
         </li>
       ))
     }

@@ -8,7 +8,7 @@ const { tune } = Astro.props;
 ---
 
 <div class="flex flex-no-wrap items-center gap-2">
-  <Link href={`/tunes/${tune.slug}`}>{tune.data.title}</Link>
+  <Link href={`/tunes/${tune.id}`}>{tune.data.title}</Link>
   {
     tune.data.tuneMeta.bandcamp?.url && (<Image class="not-prose" src={bandcampIcon} width="20" height="20" alt="Bandcamp logo" />)
   }

@@ -32,7 +32,7 @@ import bandcampIcon from "../../assets/images/bandcamp-button-square-aqua-64.png
         <ol class="flex flex-wrap items-center gap-2">
           {relatedTunesCollection.map((relatedTune) => (
             <li>
-              <Link href={`/tunes/${relatedTune.slug}`}>
+              <Link href={`/tunes/${relatedTune.id}`}>
                 {relatedTune.data.title}
               </Link>
             </li>
