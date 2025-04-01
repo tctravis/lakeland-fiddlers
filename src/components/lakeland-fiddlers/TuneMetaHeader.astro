@@ -5,10 +5,14 @@ const { relatedTunes = null, bandcamp = null } = Astro.props;
 
 import { getCollection, getEntry } from "astro:content";
 const relatedTunesCollection = relatedTunes
-  ? await getCollection("tunes", ({ slug, data }) => {
+  ? await getCollection("tunes", ({ id, data }) => {
+
       return relatedTunes.includes(data.title);
     })
   : [];
+
+
+  console.log(relatedTunesCollection);
 
 import { Image } from "astro:assets";
 import bandcampIcon from "../../assets/images/bandcamp-button-square-aqua-64.png";
