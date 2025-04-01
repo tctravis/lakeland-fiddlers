@@ -2,7 +2,7 @@
 import Link from "../../components/Link.astro";
 
 import { getCollection } from "astro:content";
-const sessionTunes = await getCollection("tunes", ({ data }) => {
+const sessionTunes = await getCollection("tunes", ({ id, data }) => {
   return Array.isArray(data.tuneMeta.type) && data.tuneMeta.type.includes('session') && data.publish;
 });
 ---
@@ -12,7 +12,7 @@ const sessionTunes = await getCollection("tunes", ({ data }) => {
     {
       sessionTunes.map((tune) => (
         <li>
-          <Link href={`/tunes/${tune.id}`}>{tune.data.title}</Link>
+          <Link href={`/tunes/${tune.id}/`}>{tune.data.title}</Link>
         </li>
       ))
     }

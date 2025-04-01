@@ -5,7 +5,7 @@ import { siteTitle, siteStrapline } from "../../data/site.json";
 import SectionPageTitle from "../../components/SectionPageTitle.astro";
 import PageSection from "../../components/PageSection.astro";
 
-import TunesAtoZ from "../../components/lakeland-fiddlers/TunesAtoZ.astro";
+import TunesFilterable from "../../components/lakeland-fiddlers/TunesFilterable.astro";
 import TunesSession from "../../components/lakeland-fiddlers/TunesSession.astro";
 import TunesAlbum from "../../components/lakeland-fiddlers/TunesAlbum.astro";
 ---
@@ -15,5 +15,5 @@ import TunesAlbum from "../../components/lakeland-fiddlers/TunesAlbum.astro";
   <PageSection><TunesAlbum albumTitle="Welcome Here Again" /></PageSection>
   <PageSection><TunesAlbum albumTitle="One Big Fiddle" /></PageSection> 
   <PageSection><TunesSession /></PageSection>
-  <PageSection><TunesAtoZ /></PageSection>
+  <PageSection><TunesFilterable /></PageSection>
 </Layout>

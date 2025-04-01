@@ -9,34 +9,20 @@ import TuneDots from "../../components/lakeland-fiddlers/TuneDots.astro";
 import TuneMetaHeader from "../../components/lakeland-fiddlers/TuneMetaHeader.astro";
 import TuneMetaFooter from "../../components/lakeland-fiddlers/TuneMetaFooter.astro";
 
-// import { getCollection } from "astro:content";
-// 1. Generate a new path for every collection entry
-// export async function getStaticPaths() {
-//   const tunes = await getCollection("tunes");
-//   return tunes.map((entry) => ({
-//     params: { slug: entry.id },
-//     props: { entry },
-//   }));
-// }
-
-// 2. For your template, you can get the entry directly from the prop
-// const { entry } = Astro.props;
-// const { Content } = await entry.render();
-
-import { getEntry } from "astro:content";
+import { getEntry, render } from "astro:content";
 // 1. Get the slug from the incoming server request
-const { slug } = Astro.params;
-if (slug === undefined) {
-  throw new Error("Slug is required");
+const { id } = Astro.params;
+if (id === undefined) {
+  throw new Error("id is required");
 }
 // 2. Query for the entry directly using the request slug
-const entry = await getEntry("tunes", slug);
+const entry = await getEntry("tunes", id);
 // 3. Redirect if the entry does not exist
 if (entry === undefined) {
   return Astro.redirect("/404");
 }
 // 4. (Optional) Render the entry to HTML in the template
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 
 const breadcrumbs = [
   { href: "/tunes", text: "Tunes" },
