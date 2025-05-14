@@ -5,6 +5,19 @@ import { getCollection } from "astro:content";
 const sessionTunes = await getCollection("tunes", ({ id, data }) => {
   return data.publish;
 });
+sessionTunes.sort((a, b) => {
+  const nameA = a.data.title.toUpperCase(); // ignore upper and lowercase
+  const nameB = b.data.title.toUpperCase(); // ignore upper and lowercase
+  if (nameA < nameB) {
+    return -1;
+  }
+  if (nameA > nameB) {
+    return 1;
+  }
+
+  // names must be equal
+  return 0;
+});
 ---
 <div class="prose prose-h2:font-headers">
     <TunesListSearchable tunes={sessionTunes} client:load />
