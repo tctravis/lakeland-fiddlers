@@ -1,0 +1,162 @@
+backend:
+  name: git-gateway
+  branch: master
+local_backend: true
+
+media_folder: "/src/assets/images"
+public_folder: "/src/content/tunes/media"
+
+# npx decap-server
+
+link: &LINK
+  - { label: "Text", name: "text", widget: "string", required: false }
+  - { label: "Url", name: "url", widget: "string", required: false }
+  - {
+      label: "Opens in new tab",
+      name: "target",
+      widget: "boolean",
+      required: false,
+      default: false,
+    }
+  - {
+      label: "Is external link",
+      name: "external",
+      widget: "boolean",
+      required: false,
+      default: false,
+    }
+
+#field groups repeated across different widgets/content sections
+image: &IMAGE
+  - {
+      label: "Image",
+      name: "src",
+      widget: "image",
+      required: false,
+      media_folder: "/src/content/tunes/media/images"
+    }
+  - { label: "Alt", name: "alt", widget: "string", required: false }
+  - {
+      label: "Width",
+      name: "width",
+      widget: "number",
+      required: false
+    }
+  - {
+      label: "Height",
+      name: "height",
+      widget: "number",
+      required: false
+    }
+  - { label: "Caption", name: "caption", widget: "string", required: false }
+
+doc: &DOC
+  - {
+      label: "Document",
+      name: "src",
+      widget: "file",
+      required: true,
+      media_folder: "/src/content/tunes/media/files"
+    }
+  - { label: "Title", name: "title", widget: "string", required: true }
+  - {
+      label: "File size",
+      name: "fileSize",
+      widget: "string",
+      required: false
+    }
+
+collections:
+  - name: tunes
+    label: Tunes
+    label_singular: "Tune"
+    folder: "src/content/tunes"
+    extension: "mdx" 
+    format: "frontmatter"
+    create: true
+    fields:
+        - label: "Title"
+          name: "title"
+          widget: "string"
+          required: true
+        - label: "Publish"
+          name: "publish"
+          widget: "boolean"
+          required: false
+          default: false
+        - label: "Tune metadata"
+          name: "tuneMeta"
+          widget: "object"
+          required: false
+          fields:
+          - label: "Type"
+            name: "type"
+            widget: "select"
+            options: ["Core", "Session"]
+            required: false
+          - label: "Rhythm"
+            name: "rhythm"
+            widget: "select"
+            options: ["Jig", "Slip Jig", "Reel", "Hornpipe", "Polka", "Waltz", "March", "Air"]
+            required: false
+          - label: "Source"
+            name: "source"
+            widget: "string"
+            required: false
+          - label: "Related Tunes"
+            name: "relatedTunes"
+            widget: "relation"
+            collection: "tunes"
+            search_fields: ["title"]
+            value_field: "title"
+            display_fields: ["title"]
+            required: false
+            multiple: true
+          - label: "Related links"
+            name: "relatedLinks"
+            widget: "list"
+            collapsed: true
+            label_singular: "link"
+            required: false
+            fields: *LINK
+        - label: "Tune dots"
+          name: "tuneDots"
+          widget: "list"
+          summary: "{{dots.image.title}}"
+          required: false
+          fields:
+          - label: "Dots"
+            name: "dots"
+            widget: "object"
+            required: false
+            fields: 
+              - label: "Image"
+                name: "image"
+                widget: "object"
+                required: false
+                fields: *IMAGE
+              - label: "Download"
+                name: "download"
+                widget: "object"
+                required: false
+                fields: *DOC
+        - label: "Tune video"
+          name: "tuneVideo"
+          widget: "list"
+          summary: "{{video.title}}"
+          required: false
+          fields:
+          - label: "Video"
+            name: "video"
+            widget: "object"
+            required: false
+            fields: 
+              - label: "Title"
+                name: "title"
+                widget: "string"
+                required: true
+              - label: "Video"
+                name: "src"
+                widget: "file"
+                media_folder: "/src/content/tunes/media/videos"
+                required: true
