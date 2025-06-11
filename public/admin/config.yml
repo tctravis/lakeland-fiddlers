@@ -89,15 +89,20 @@ collections:
           widget: "object"
           required: false
           fields:
-          - label: "Type"
-            name: "type"
-            widget: "select"
-            options: ["Core", "Session"]
-            required: false
+          # - label: "Type"
+          #   name: "type"
+          #   widget: "select"
+          #   options: ["Core", "Session"]
+          #   required: false
           - label: "Rhythm"
             name: "rhythm"
             widget: "select"
             options: ["Jig", "Slip Jig", "Reel", "Hornpipe", "Polka", "Waltz", "March", "Air"]
+            required: false
+          - label: "Region"
+            name: "region"
+            widget: "select"
+            options: ["Cumbria", "Lancashire", "North-west", "Other"]
             required: false
           - label: "Source"
             name: "source"
@@ -115,10 +120,15 @@ collections:
           - label: "Related links"
             name: "relatedLinks"
             widget: "list"
-            collapsed: true
             label_singular: "link"
+            summary: "{{link.text}}"
             required: false
-            fields: *LINK
+            fields: 
+            - label: "Link"
+              name: "link"
+              required: false
+              widget: "object"
+              fields: *LINK
         - label: "Tune dots"
           name: "tuneDots"
           widget: "list"
@@ -160,3 +170,7 @@ collections:
                 widget: "file"
                 media_folder: "/src/content/tunes/media/videos"
                 required: true
+        - label: "Body"
+          name: "body"
+          widget: "markdown"
+          required: false
