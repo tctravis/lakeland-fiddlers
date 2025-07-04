@@ -168,7 +168,7 @@ collections:
               - label: "Video"
                 name: "src"
                 widget: "file"
-                media_folder: "/src/content/tunes/media/videos"
+                media_folder: "/public/tunes/media/videos"
                 required: true
         - label: "Body"
           name: "body"
