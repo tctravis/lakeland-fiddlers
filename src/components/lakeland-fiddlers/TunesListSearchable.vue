@@ -4,7 +4,7 @@
       <h3 class="font-bold">Filter tunes by:</h3>
       <div class="flex flex-wrap items-center gap-2">
         <label for="tuneTitle" class="w-full sm:w-auto">Title: </label>
-        <input class="w-full sm:w-auto" name="tuneTitle" type="text" v-model="titleFilter"
+        <input class="w-full sm:w-auto p-1" name="tuneTitle" type="text" v-model="titleFilter"
           placeholder="Search for a tune..." />
         <button @click="titleFilter = ''" class="bg-red-500 text-white px-2 py-0 rounded">Clear</button>
       </div>
@@ -12,9 +12,19 @@
         <label for="cumbrianMsTunes">Cumbria MSS tunes only</label>
         <input type="checkbox" name="cumbrianMsTunes" v-model="cumbrianMsTunes" />
       </div>
+            <div class="flex flex-wrap items-center gap-2">
+        <label for="tutorFilter">Taught by:</label>
+        <select class="p-1"  name="tutorFilter" v-model="tutorFilter">
+          <option value="">All tutors</option>
+          <option value="Carolyn">Carolyn</option>
+          <option value="Wal">Wal</option>
+          <option value="Jimmy">Jimmy</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
     </div>
-    <ul class="space-y-2">
-      <li v-for="tune in filteredTunes" :key="tune.id">
+    <ul class="grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 list-none pl-0 auto-rows-fr">
+      <li class="bg-stone-200 p-2 m-0 " v-for="tune in filteredTunes" :key="tune.id">
         <a class="underline" :href="`/tunes/${tune.id}/`">{{ tune.data.title }}</a>
       </li>
     </ul>
@@ -37,6 +47,10 @@ const titleFilter = defineModel('titleFilter', {
   type: String,
   default: ''
 });
+const tutorFilter = defineModel('tutorFilter', {
+  type: String,
+  default: ''
+});
 
 const cumbrianMsTunes = ref(false)
 
@@ -47,16 +61,23 @@ const filteredTunes = computed(() => {
       return tune.data.title.toLowerCase().includes(titleFilter.value.toLowerCase());
     });
   }
+  if (tutorFilter.value !== '') {
+    filteredTunes = filteredTunes.filter((tune) => {
+      return tune.data.tuneMeta?.taughtBy?.toLowerCase() === tutorFilter.value.toLowerCase();
+    });
+  }
   if (cumbrianMsTunes.value) {
     filteredTunes = filteredTunes.filter((tune) => {
       return tune.data.tuneMeta.region === 'Cumbria'
     });
   }
+  
   return filteredTunes
 });
 
 onMounted(() => {
   titleFilter.value = '';
+  tutorFilter.value = '';
   cumbrianMsTunes.value = false;
 });
 </script>
