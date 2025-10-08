@@ -55,10 +55,10 @@ doc: &DOC
       label: "Document",
       name: "src",
       widget: "file",
-      required: true,
+      required: false,
       media_folder: "/src/content/tunes/media/files"
     }
-  - { label: "Title", name: "title", widget: "string", required: true }
+  - { label: "Title", name: "title", widget: "string", required: false }
   - {
       label: "File size",
       name: "fileSize",
@@ -107,6 +107,11 @@ collections:
           - label: "Source"
             name: "source"
             widget: "string"
+            required: false
+          - label: "Taught by"
+            name: "taughtBy"
+            widget: "select"
+            options: ["Carolyn", "Wal", "Jimmy", "Other"]
             required: false
           - label: "Related Tunes"
             name: "relatedTunes"

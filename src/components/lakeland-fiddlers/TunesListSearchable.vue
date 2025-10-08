@@ -9,7 +9,7 @@
         <button @click="titleFilter = ''" class="bg-red-500 text-white px-2 py-0 rounded">Clear</button>
       </div>
       <div class="flex flex-wrap items-center gap-2">
-        <label for="cumbrianMsTunes">Cumbrian fiddler's manuscript tunes only</label>
+        <label for="cumbrianMsTunes">Cumbria MSS tunes only</label>
         <input type="checkbox" name="cumbrianMsTunes" v-model="cumbrianMsTunes" />
       </div>
     </div>
