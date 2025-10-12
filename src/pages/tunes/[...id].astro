@@ -62,7 +62,7 @@ const tuneVideo = entry.data.tuneVideo;
           <Prose>
             <h2>{video.video.title}</h2>
             <video controls playsinline>
-              <source src={video.video.src} type="video/mp4" />
+              <source src={video.video.src.substring(0, 7) === "/public" ? video.video.src.substring(7) : video.video.src} type="video/mp4" />
             </video>
           </Prose>
         </PageSection>
