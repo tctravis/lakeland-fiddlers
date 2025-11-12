@@ -3,12 +3,16 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 
 import { siteTitle, siteStrapline } from "../data/site.json";
+import SectionPageTitle from "../components/SectionPageTitle.astro";
 import PageSection from "../components/PageSection.astro";
+import TunesFilterable from "../components/lakeland-fiddlers/TunesFilterable.astro";
 ---
 
 <Layout pageTitle={siteTitle}>
   <Hero pageTitle={siteTitle} pageSubTitle={siteStrapline} />
-  <PageSection>
+  <SectionPageTitle pageTitle="Tune archive" />
+  <PageSection><TunesFilterable /></PageSection>
+  <!-- <PageSection>
     <div class="space-y-4 flex flex-col items-center">
       <h2 class="mx-auto text-4xl font-headers font-weight-headers">
         Calendar
@@ -25,5 +29,5 @@ import PageSection from "../components/PageSection.astro";
           scrolling="no"></iframe>
       </div>
     </div>
-  </PageSection>
+  </PageSection> -->
 </Layout>

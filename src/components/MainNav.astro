@@ -4,7 +4,7 @@ import { siteEmail } from "../data/site.json";
 const { class:className } = Astro.props;
 ---
 <nav class:list={[className, 'flex', 'gap-x-4', 'items-center']}>
-    <a href="/tunes">Tune archive</a>
+    <a href="/">Home</a>
     <!-- <a href="/library">Library</a> -->
     <a href="mailto:{siteEmail}">Contact</a>
 </nav>

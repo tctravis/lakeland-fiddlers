@@ -25,7 +25,7 @@ if (entry === undefined) {
 const { Content } = await render(entry);
 
 const breadcrumbs = [
-  { href: "/tunes", text: "Tunes" },
+  { href: "/", text: "Tunes" },
   { href: "/tunes" + entry.id, text: entry.data.title },
 ];
 const tuneMeta = entry.data.tuneMeta ? entry.data.tuneMeta : false;
