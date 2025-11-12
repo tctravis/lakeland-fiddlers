@@ -1,7 +1,11 @@
+# backend:
+#   name: git-gateway
+#   branch: master
+# local_backend: true
+
 backend:
-  name: git-gateway
-  branch: master
-local_backend: true
+  name: github
+  repo: tctravis/lakeland-fiddlers
 
 media_folder: "/src/assets/images"
 public_folder: "/src/content/tunes/media"
@@ -70,7 +74,7 @@ collections:
   - name: tunes
     label: Tunes
     label_singular: "Tune"
-    folder: "src/content/tunes"
+    folder: "/src/content/tunes"
     extension: "mdx" 
     format: "frontmatter"
     create: true
