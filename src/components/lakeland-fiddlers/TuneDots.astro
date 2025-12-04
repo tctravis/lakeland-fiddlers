@@ -5,13 +5,15 @@ import Link from "../Link.astro";
 const { tuneDots } = Astro.props;
 const downloadFileType = tuneDots.download?.fileType ? tuneDots.download.fileType : 'PDF'
 // console.log("tuneDots: ", tuneDots);
+
+tuneDots.image.src = tuneDots.image.src.substring(0, 7) === "/public" ? tuneDots.image.src.substring(7) : tuneDots.image.src
 ---
 
 <div class="max-w-[800px] space-y-8">
   {
     tuneDots.download && (
       <div>
-        <Link target="_blank" href={tuneDots.download.src}>
+        <Link target="_blank" href={tuneDots.download.src.substring(0, 7) === "/public" ? tuneDots.download.src.substring(7) : tuneDots.download.src}>
           {tuneDots.download.title} - {downloadFileType} - {tuneDots.download.fileSize}
         </Link>
       </div>
