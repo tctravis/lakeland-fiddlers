@@ -7,8 +7,8 @@ backend:
   name: github
   repo: tctravis/lakeland-fiddlers
 
-media_folder: "/tunes/media"
-public_folder: "/tunes/media/images"
+media_folder: "public/tunes"
+public_folder: "/tunes/media"
 
 # npx decap-server
 
@@ -37,7 +37,7 @@ image: &IMAGE
       name: "src",
       widget: "image",
       required: false,
-      media_folder: "/public/tunes/media/images"
+      media_folder: "public/tunes/media/images"
     }
   - { label: "Alt", name: "alt", widget: "string", required: false }
   - {
@@ -60,7 +60,7 @@ doc: &DOC
       name: "src",
       widget: "file",
       required: false,
-      media_folder: "/public/tunes/media/files"
+      media_folder: "public/tunes/media/files"
     }
   - { label: "Title", name: "title", widget: "string", required: false }
   - {
@@ -177,7 +177,7 @@ collections:
               - label: "Video"
                 name: "src"
                 widget: "file"
-                media_folder: "/public/tunes/media/videos"
+                media_folder: "public/tunes/media/videos"
                 required: true
         - label: "Body"
           name: "body"
