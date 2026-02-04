@@ -8,7 +8,7 @@ backend:
   repo: tctravis/lakeland-fiddlers
 
 media_folder: "/tunes/media"
-public_folder: "/tunes/media"
+public_folder: "/tunes/media/images"
 
 # npx decap-server
 
