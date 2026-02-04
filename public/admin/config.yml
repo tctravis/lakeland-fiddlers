@@ -1,11 +1,11 @@
-backend:
-  name: git-gateway
-  branch: master
-local_backend: true
-
 # backend:
-#   name: github
-#   repo: tctravis/lakeland-fiddlers
+#   name: git-gateway
+#   branch: master
+# local_backend: true
+
+backend:
+  name: github
+  repo: tctravis/lakeland-fiddlers
 
 media_folder: "/public/tunes/media"
 public_folder: "/tunes/media"
