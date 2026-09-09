@@ -39,7 +39,7 @@ image: &IMAGE
       required: false,
       media_folder: "/public/tunes/media/images"
     }
-  - { label: "Alt", name: "alt", widget: "string", required: false }
+  - { label: "Alt", name: "alt", widget: "string", required: true }
   - {
       label: "Width",
       name: "width",
